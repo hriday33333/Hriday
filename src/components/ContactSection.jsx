@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { useToast } from '@/hooks/use-toast';
 import { cn } from '@/lib/utils';
@@ -74,15 +74,22 @@ export const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch('https://formspree.io/f/xwpbojaj', {
+      const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          access_key: 'f96d6c6f-a8e3-414c-9751-b3acf256c84e',
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (result.success) {
         toast({
           title: 'Message sent! 🎉',
           description: "I'll get back to you within 24 hours.",
@@ -160,7 +167,7 @@ export const ContactSection = () => {
                     Phone
                   </p>
                   <a
-                    href="tel:+88 01613577742"
+                    href="tel:+8801613577742"
                     className="text-sm sm:text-base font-medium hover:text-primary transition-colors"
                   >
                     +8801613577742
