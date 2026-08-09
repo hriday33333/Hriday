@@ -1,6 +1,5 @@
-// Update this once you have your final production domain
-// (custom domain or your Vercel/Netlify URL).
+// src/lib/site-config.js
 export const siteConfig = {
-  url: "https://benevolent-tiramisu-6e488a.netlify.app",
+  url: "https://hriday-green.vercel.app",
   name: "Zakir Hasan Hriday",
 };
