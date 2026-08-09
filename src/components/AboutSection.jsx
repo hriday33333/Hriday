@@ -215,7 +215,7 @@ export const AboutSection = () => {
                   {/* Achievements */}
                   <div className="flex-1 text-center md:text-left">
                     <h1 className="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">
-                      Zakir Hasan Hriday 3
+                      Zakir Hasan Hriday
                     </h1>
                     <p className="text-primary text-base sm:text-lg font-semibold mb-3 sm:mb-4">
                       MERN Stack Developer
