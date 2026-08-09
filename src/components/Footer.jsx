@@ -29,10 +29,10 @@ export const Footer = () => {
     { name: "Contact", href: "#contact" },
   ];
 
-  const contactInfo = [
-    { icon: <Mail size={16} />, text: "zakirhasanhriday@gmail.com", href: "zakrhasanhriday@gmail.com" },
-    { icon: <Phone size={16} />, text: "+88 01613577742", href: "tel:01613577742" },
-  ];
+ const contactInfo = [
+  { icon: <Mail size={16} />, text: "zakirhasanhriday@gmail.com", href: "mailto:zakirhasanhriday@gmail.com" },
+  { icon: <Phone size={16} />, text: "+88 01613577742", href: "tel:+8801613577742" },
+];
 
   const containerVariants = {
     hidden: { opacity: 0 },

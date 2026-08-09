@@ -98,7 +98,7 @@ export const ContactSection = () => {
       toast({
         title: 'Oops! Something went wrong',
         description:
-          'Please try again or email me directly at codewithkinu@gmail.com',
+          'Please try again or email me directly at zakirhasanhriday@gmail.com',
         variant: 'destructive',
       });
     } finally {
@@ -143,7 +143,7 @@ export const ContactSection = () => {
                     Email
                   </p>
                   <a
-                    href="mailto:codewithkinu@gmail.com"
+                    href="mailto:zakirhasanhriday@gmail.com"
                     className="text-sm sm:text-base font-medium hover:text-primary transition-colors"
                   >
                     zakirhasanhriday@gmail.com
@@ -163,7 +163,7 @@ export const ContactSection = () => {
                     href="tel:+88 01613577742"
                     className="text-sm sm:text-base font-medium hover:text-primary transition-colors"
                   >
-                    +88 01613577742
+                    +8801613577742
                   </a>
                 </div>
               </div>
