@@ -1,38 +1,93 @@
-"use client";
+'use client';
 
+import { motion } from 'framer-motion';
 import {
   ArrowUp,
-  Linkedin,
-  Instagram,
-  Youtube,
   Github,
+  Instagram,
+  Linkedin,
+  Loader2,
   Mail,
   Phone,
-  MapPin,
-} from "lucide-react";
-import { motion } from "framer-motion";
+  Youtube,
+} from 'lucide-react';
+import { useState } from 'react';
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [status, setStatus] = useState('idle'); // idle | loading | success | error
+
+  const handleNewsletterSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!newsletterEmail.trim()) return;
+
+    setStatus('loading');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: 'f96d6c6f-a8e3-414c-9751-b3acf256c84e',
+          subject: 'New Newsletter Subscriber',
+          from_name: 'Portfolio Newsletter',
+          email: newsletterEmail,
+          message: `New newsletter subscription request from: ${newsletterEmail}`,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus('success');
+        setNewsletterEmail('');
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      setStatus('error');
+    }
+  };
+
   const socialLinks = [
-    { icon: <Linkedin size={18} />, href: "https://www.linkedin.com/in/zakir-hasan/", label: "LinkedIn" },
-    { icon: <Instagram size={18} />, href: "#", label: "Instagram" },
-    { icon: <Youtube size={18} />, href: "#", label: "YouTube" },
-    { icon: <Github size={18} />, href: "https://github.com/hriday33333", label: "GitHub" },
+    {
+      icon: <Linkedin size={18} />,
+      href: 'https://www.linkedin.com/in/zakir-hasan/',
+      label: 'LinkedIn',
+    },
+    { icon: <Instagram size={18} />, href: '#', label: 'Instagram' },
+    { icon: <Youtube size={18} />, href: '#', label: 'YouTube' },
+    {
+      icon: <Github size={18} />,
+      href: 'https://github.com/hriday33333',
+      label: 'GitHub',
+    },
   ];
 
   const quickLinks = [
-    { name: "Home", href: "#hero" },
-    { name: "About", href: "#about" },
-    { name: "Work", href: "#work" },
-    { name: "Contact", href: "#contact" },
+    { name: 'Home', href: '#hero' },
+    { name: 'About', href: '#about' },
+    { name: 'Work', href: '#work' },
+    { name: 'Contact', href: '#contact' },
   ];
 
- const contactInfo = [
-  { icon: <Mail size={16} />, text: "zakirhasanhriday@gmail.com", href: "mailto:zakirhasanhriday@gmail.com" },
-  { icon: <Phone size={16} />, text: "+88 01613577742", href: "tel:+8801613577742" },
-];
+  const contactInfo = [
+    {
+      icon: <Mail size={16} />,
+      text: 'zakirhasanhriday@gmail.com',
+      href: 'mailto:zakirhasanhriday@gmail.com',
+    },
+    {
+      icon: <Phone size={16} />,
+      text: '+88 01613577742',
+      href: 'tel:+8801613577742',
+    },
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -40,9 +95,9 @@ export const Footer = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
-    }
+        delayChildren: 0.2,
+      },
+    },
   };
 
   const itemVariants = {
@@ -51,9 +106,9 @@ export const Footer = () => {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.5
-      }
-    }
+        duration: 0.5,
+      },
+    },
   };
 
   return (
@@ -70,7 +125,9 @@ export const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {/* Branding */}
             <motion.div variants={itemVariants} className="space-y-4">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white">Hriday</h3>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                Zakir Hasan Hriday
+              </h3>
               <p className="text-gray-600 dark:text-gray-300 text-sm">
                 Digital designer & developer creating meaningful experiences.
               </p>
@@ -94,13 +151,15 @@ export const Footer = () => {
 
             {/* Navigation */}
             <motion.div variants={itemVariants}>
-              <h4 className="text-gray-900 dark:text-white font-medium mb-4 text-sm uppercase tracking-wider">Navigation</h4>
+              <h4 className="text-gray-900 dark:text-white font-medium mb-4 text-sm uppercase tracking-wider">
+                Navigation
+              </h4>
               <ul className="space-y-3">
                 {quickLinks.map((link, index) => (
                   <motion.li
                     key={index}
                     whileHover={{ x: 2 }}
-                    transition={{ type: "spring", stiffness: 300 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
                   >
                     <a
                       href={link.href}
@@ -115,7 +174,9 @@ export const Footer = () => {
 
             {/* Contact */}
             <motion.div variants={itemVariants}>
-              <h4 className="text-gray-900 dark:text-white font-medium mb-4 text-sm uppercase tracking-wider">Contact</h4>
+              <h4 className="text-gray-900 dark:text-white font-medium mb-4 text-sm uppercase tracking-wider">
+                Contact
+              </h4>
               <ul className="space-y-3">
                 {contactInfo.map((info, index) => (
                   <motion.li
@@ -123,7 +184,9 @@ export const Footer = () => {
                     className="flex items-start space-x-3 text-sm"
                     whileHover={{ scale: 1.02 }}
                   >
-                    <span className="text-gray-600 dark:text-gray-400 mt-0.5">{info.icon}</span>
+                    <span className="text-gray-600 dark:text-gray-400 mt-0.5">
+                      {info.icon}
+                    </span>
                     {info.href ? (
                       <a
                         href={info.href}
@@ -132,7 +195,9 @@ export const Footer = () => {
                         {info.text}
                       </a>
                     ) : (
-                      <span className="text-gray-600 dark:text-gray-300">{info.text}</span>
+                      <span className="text-gray-600 dark:text-gray-300">
+                        {info.text}
+                      </span>
                     )}
                   </motion.li>
                 ))}
@@ -141,23 +206,45 @@ export const Footer = () => {
 
             {/* Newsletter */}
             <motion.div variants={itemVariants} className="space-y-4">
-              <h4 className="text-gray-900 dark:text-white font-medium text-sm uppercase tracking-wider">Newsletter</h4>
+              <h4 className="text-gray-900 dark:text-white font-medium text-sm uppercase tracking-wider">
+                Newsletter
+              </h4>
               <p className="text-gray-600 dark:text-gray-300 text-sm">
                 Subscribe to get updates on my latest work.
               </p>
-              <form className="space-y-3">
+              <form className="space-y-3" onSubmit={handleNewsletterSubmit}>
                 <input
                   type="email"
                   placeholder="Your email"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
                   className="px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 dark:bg-gray-800/50 rounded-md focus:outline-none focus:ring-1 focus:ring-gray-900 dark:focus:ring-gray-300 focus:border-gray-900 dark:focus:border-gray-300 w-full"
                   required
                 />
                 <button
                   type="submit"
-                  className="bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-200 dark:text-gray-900 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-300 w-full"
+                  disabled={status === 'loading'}
+                  className="bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-200 dark:text-gray-900 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors duration-300 w-full flex items-center justify-center gap-2 disabled:opacity-70"
                 >
-                  Subscribe
+                  {status === 'loading' ? (
+                    <>
+                      <Loader2 size={14} className="animate-spin" />
+                      Subscribing...
+                    </>
+                  ) : (
+                    'Subscribe'
+                  )}
                 </button>
+                {status === 'success' && (
+                  <p className="text-xs text-green-600 dark:text-green-400">
+                    Thanks for subscribing! 🎉
+                  </p>
+                )}
+                {status === 'error' && (
+                  <p className="text-xs text-red-600 dark:text-red-400">
+                    Something went wrong. Please try again.
+                  </p>
+                )}
               </form>
             </motion.div>
           </div>
@@ -175,9 +262,24 @@ export const Footer = () => {
             </div>
 
             <div className="flex items-center space-x-6">
-              <a href="#" className="hover:text-gray-900 dark:hover:text-white transition-colors">Privacy</a>
-              <a href="#" className="hover:text-gray-900 dark:hover:text-white transition-colors">Terms</a>
-              <a href="#" className="hover:text-gray-900 dark:hover:text-white transition-colors">Cookies</a>
+              <a
+                href="#"
+                className="hover:text-gray-900 dark:hover:text-white transition-colors"
+              >
+                Privacy
+              </a>
+              <a
+                href="#"
+                className="hover:text-gray-900 dark:hover:text-white transition-colors"
+              >
+                Terms
+              </a>
+              <a
+                href="#"
+                className="hover:text-gray-900 dark:hover:text-white transition-colors"
+              >
+                Cookies
+              </a>
               <motion.a
                 href="#hero"
                 aria-label="Back to top"

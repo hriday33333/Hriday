@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { motion, useInView } from 'framer-motion';
 import {
@@ -10,7 +10,6 @@ import {
   MousePointerClick,
   Shield,
   TrendingUp,
-  Zap,
 } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 
@@ -21,10 +20,10 @@ export const HeroSection = () => {
   const [displayedCode, setDisplayedCode] = useState('');
 
   const codeSnippets = [
-    "import { MERN-Stack-Developer } from 'Zakir hasan Hrday';",
+    "import { MERN-Stack-Developer } from 'Zakir Hasan Hriday';",
     '',
     'const developer = new MERN-Stack-Developer({',
-    "  name: 'Zakir hasan Hrday',",
+    "  name: 'Zakir Hasan Hriday',",
     "  stack: ['React', 'Next.js', 'Node.js', 'JavaScript'],",
     "  focus: 'Building scalable web applications',",
     "  status: 'Open to new opportunities'",
@@ -39,24 +38,14 @@ export const HeroSection = () => {
 
   const achievements = [
     {
-      number: '0+',
+      number: '1+',
       label: 'Years in Production',
       icon: <Shield className="h-3 w-3" />,
     },
     {
-      number: '#',
+      number: '8+',
       label: 'Projects Delivered',
       icon: <TrendingUp className="h-3 w-3" />,
-    },
-    {
-      number: '100%',
-      label: '#',
-      icon: <Award className="h-3 w-3" />,
-    },
-    {
-      number: '15+',
-      label: 'Projects completed',
-      icon: <Zap className="h-3 w-3" />,
     },
   ];
 
@@ -202,7 +191,7 @@ export const HeroSection = () => {
             </motion.p>
 
             <motion.div
-              className="grid grid-cols-2 sm:grid-cols-4 gap-4 my-8"
+              className="grid grid-cols-2 gap-4 my-8 max-w-md mx-auto lg:mx-0"
               variants={{
                 hidden: { y: 30, opacity: 0 },
                 visible: { y: 0, opacity: 1, transition: { duration: 0.8 } },
@@ -328,21 +317,21 @@ export const HeroSection = () => {
                               line.includes('import')
                                 ? 'text-purple-400 font-semibold'
                                 : line.includes('const') || line.includes('new')
-                                ? 'text-blue-400 font-semibold'
-                                : line.includes('React') ||
-                                  line.includes('Node.js') ||
-                                  line.includes('TypeScript')
-                                ? 'text-cyan-400'
-                                : line.includes('FullStackDeveloper')
-                                ? 'text-emerald-400 font-semibold'
-                                : line.includes('//')
-                                ? 'text-muted-foreground italic'
-                                : line.includes('await') ||
-                                  line.includes('connect')
-                                ? 'text-yellow-400'
-                                : line.includes("'")
-                                ? 'text-amber-400'
-                                : 'text-foreground'
+                                  ? 'text-blue-400 font-semibold'
+                                  : line.includes('React') ||
+                                      line.includes('Node.js') ||
+                                      line.includes('TypeScript')
+                                    ? 'text-cyan-400'
+                                    : line.includes('FullStackDeveloper')
+                                      ? 'text-emerald-400 font-semibold'
+                                      : line.includes('//')
+                                        ? 'text-muted-foreground italic'
+                                        : line.includes('await') ||
+                                            line.includes('connect')
+                                          ? 'text-yellow-400'
+                                          : line.includes("'")
+                                            ? 'text-amber-400'
+                                            : 'text-foreground'
                             }
                           `}
                         >

@@ -84,7 +84,7 @@ export const AboutSection = () => {
     { icon: <Twitter className="h-5 w-5" />, href: '#' },
     {
       icon: <Mail className="h-5 w-5" />,
-      href: 'zakrhasanhriday@gmail.com',
+      href: 'mailto:zakirhasanhriday@gmail.com',
     },
   ];
 
@@ -166,14 +166,14 @@ export const AboutSection = () => {
               ABOUT ME
             </span>
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6">
             <span className="bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
               Transforming
             </span>
             <span className="block text-primary animate-pulse">
               Ideas Into Reality
             </span>
-          </h1>
+          </h2>
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             Building digital experiences that combine{' '}
             <span className="text-primary font-semibold">innovation</span>,{' '}
@@ -200,7 +200,7 @@ export const AboutSection = () => {
                     <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl transition-all duration-500 group-hover:border-primary/40 group-hover:scale-105 md:group-hover:scale-110 relative">
                       <Image
                         src={hriday}
-                        alt="Hriday"
+                        alt="Zakir Hasan Hriday - MERN Stack Developer profile photo"
                         fill
                         sizes="(max-width: 640px) 112px, 128px"
                         className="object-cover"
@@ -214,9 +214,9 @@ export const AboutSection = () => {
 
                   {/* Achievements */}
                   <div className="flex-1 text-center md:text-left">
-                    <h1 className="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">
+                    <h3 className="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">
                       Zakir Hasan Hriday
-                    </h1>
+                    </h3>
                     <p className="text-primary text-base sm:text-lg font-semibold mb-3 sm:mb-4">
                       MERN Stack Developer
                     </p>
