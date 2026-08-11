@@ -2,6 +2,7 @@
 
 import { cn } from '@/lib/utils';
 import { motion } from 'framer-motion';
+import { useTheme } from 'next-themes';
 import {
   Briefcase,
   Code,
@@ -28,28 +29,33 @@ const navItems = [
   { name: 'Contact', href: '#contact', icon: Mail },
 ];
 
-// ⚠️ NOTE: this toggle uses its own localStorage/classList logic.
-// Providers.jsx already has a next-themes ThemeProvider wrapping the app.
-// Having two separate theme systems can occasionally cause flicker or
-// inconsistency (e.g. dark mode not persisting correctly on refresh).
-// Left as-is for now since it currently works — flagging for awareness.
+// Fixed: this toggle now uses next-themes (the same system WelcomeScreen.jsx
+// already uses) instead of its own separate localStorage/classList logic.
+// Two independent systems were both controlling the <html> "dark" class,
+// which caused dark mode to apply but light mode to not properly revert.
 const ThemeToggle = () => {
-  const [theme, setTheme] = useState('light');
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem('theme');
-    if (stored === 'dark') {
-      document.documentElement.classList.add('dark');
-      setTheme('dark');
-    }
+    setMounted(true);
   }, []);
 
   const toggleTheme = () => {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-    document.documentElement.classList.toggle('dark');
-    localStorage.setItem('theme', newTheme);
-    setTheme(newTheme);
+    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
   };
+
+  if (!mounted) {
+    return (
+      <button
+        className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800"
+        title="Toggle theme"
+        aria-label="Toggle theme"
+      >
+        <Moon className="w-5 h-5" />
+      </button>
+    );
+  }
 
   return (
     <button
@@ -58,7 +64,7 @@ const ThemeToggle = () => {
       title="Toggle theme"
       aria-label="Toggle theme"
     >
-      {theme === 'dark' ? (
+      {resolvedTheme === 'dark' ? (
         <Sun className="w-5 h-5" />
       ) : (
         <Moon className="w-5 h-5" />
@@ -157,7 +163,7 @@ export const Navbar = () => {
       >
         {/* Website Globe Button */}
         <motion.a
-          href="https://hriday-green.vercel.app/"
+          href="https://benevolent-tiramisu-6e488a.netlify.app/"
           target="_blank"
           rel="noopener noreferrer"
           className={cn(
