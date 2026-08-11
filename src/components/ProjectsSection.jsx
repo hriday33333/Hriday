@@ -352,10 +352,10 @@ export const ProjectsSection = () => {
                     {/* Status Badge */}
                     <div className="absolute top-3 right-3">
                       <div
-                        className={`px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm ${
+                        className={`px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-md shadow-md ${
                           project.status === 'Live'
-                            ? 'bg-emerald-500/20 text-emerald-600 border border-emerald-500/30'
-                            : 'bg-amber-500/20 text-amber-600 border border-amber-500/30'
+                            ? 'bg-emerald-600/90 text-white border border-emerald-400/40'
+                            : 'bg-amber-600/90 text-white border border-amber-400/40'
                         }`}
                       >
                         {project.status}
@@ -364,14 +364,18 @@ export const ProjectsSection = () => {
 
                     {/* Category Badge */}
                     <div className="absolute top-3 left-3">
-                      <span
-                        className={`px-3 py-1 rounded-full text-xs font-medium backdrop-blur-sm border ${
-                          categoryColors[project.category]
-                        }`}
-                      >
+                      <span className="px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-md shadow-md bg-black/70 text-white border border-white/20">
                         {project.category}
                       </span>
                     </div>
+
+                    {/* Persistent Video Indicator (always visible, not just on hover) */}
+                    {project.video && (
+                      <div className="absolute bottom-3 right-3 flex items-center gap-1.5 px-2.5 py-1.5 rounded-full bg-black/70 backdrop-blur-md text-white text-xs font-medium shadow-md border border-white/20">
+                        <Play size={12} className="fill-white" />
+                        <span>Video</span>
+                      </div>
+                    )}
 
                     {/* Hover Actions */}
                     <motion.div

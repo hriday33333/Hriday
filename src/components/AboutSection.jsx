@@ -7,9 +7,11 @@ import {
   Calendar,
   Code,
   Download,
+  GraduationCap,
   Github,
   Linkedin,
   Mail,
+  MapPin,
   Sparkles,
   Star,
   Target,
@@ -96,6 +98,34 @@ export const AboutSection = () => {
     approach:
       'I believe in clean code, thorough testing, and user-centered design. My process emphasizes collaboration, agile methodologies, and continuous improvement.',
   };
+
+  // Where I'm from
+  const locationInfo = [
+    { label: 'Division', value: 'Mymensingh' },
+    { label: 'District', value: 'Netrakona' },
+    { label: 'Thana', value: 'Madan' },
+    { label: 'Village', value: 'Mamudpur' },
+  ];
+
+  // Education background
+  const educationInfo = [
+    {
+      level: 'Primary School',
+      institute: 'Jahangirpur Model Government Primary School',
+    },
+    {
+      level: 'High School',
+      institute: 'Jahangirpur T. Amin Government High School',
+    },
+    {
+      level: 'College',
+      institute: 'Haji Abdul Aziz Khan Government Degree College',
+    },
+    {
+      level: 'Programming',
+      institute: 'Self-taught via Programming Hero',
+    },
+  ];
 
   useEffect(() => {
     const handleMouseMove = (e) =>
@@ -279,6 +309,62 @@ export const AboutSection = () => {
                       {tabContent[activeTab]}
                     </motion.p>
                   </AnimatePresence>
+                </div>
+              </div>
+            </div>
+
+            {/* Background: Location + Education */}
+            <div className="bg-card/50 border border-border rounded-3xl p-6 sm:p-8 backdrop-blur-xl shadow-2xl transition-all duration-500 hover:shadow-3xl hover:border-primary/40 hover:bg-card/60">
+              <h3 className="text-lg sm:text-2xl font-bold mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
+                <MapPin className="h-4 sm:h-6 w-4 sm:w-6 text-primary" />
+                Background
+              </h3>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+                {/* Where I'm From */}
+                <div>
+                  <h4 className="font-semibold text-sm sm:text-base mb-3 sm:mb-4 flex items-center gap-2 text-muted-foreground">
+                    <MapPin className="h-4 w-4 text-primary" />
+                    Where I'm From
+                  </h4>
+                  <div className="space-y-2 sm:space-y-3">
+                    {locationInfo.map((item, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center justify-between bg-background/50 border border-border rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm"
+                      >
+                        <span className="text-muted-foreground">
+                          {item.label}
+                        </span>
+                        <span className="font-medium text-foreground">
+                          {item.value}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Education */}
+                <div>
+                  <h4 className="font-semibold text-sm sm:text-base mb-3 sm:mb-4 flex items-center gap-2 text-muted-foreground">
+                    <GraduationCap className="h-4 w-4 text-primary" />
+                    Education
+                  </h4>
+                  <div className="space-y-2 sm:space-y-3">
+                    {educationInfo.map((item, index) => (
+                      <div
+                        key={index}
+                        className="bg-background/50 border border-border rounded-xl px-3 sm:px-4 py-2 sm:py-2.5"
+                      >
+                        <div className="text-xs sm:text-sm font-medium text-primary">
+                          {item.level}
+                        </div>
+                        <div className="text-xs sm:text-sm text-muted-foreground mt-0.5">
+                          {item.institute}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

@@ -28,6 +28,11 @@ const navItems = [
   { name: 'Contact', href: '#contact', icon: Mail },
 ];
 
+// ⚠️ NOTE: this toggle uses its own localStorage/classList logic.
+// Providers.jsx already has a next-themes ThemeProvider wrapping the app.
+// Having two separate theme systems can occasionally cause flicker or
+// inconsistency (e.g. dark mode not persisting correctly on refresh).
+// Left as-is for now since it currently works — flagging for awareness.
 const ThemeToggle = () => {
   const [theme, setTheme] = useState('light');
 
@@ -152,7 +157,7 @@ export const Navbar = () => {
       >
         {/* Website Globe Button */}
         <motion.a
-          href="https://benevolent-tiramisu-6e488a.netlify.app/"
+          href="https://hriday-green.vercel.app/"
           target="_blank"
           rel="noopener noreferrer"
           className={cn(

@@ -30,7 +30,7 @@ const WelcomeScreen = ({ onWelcomeComplete }) => {
   };
 
   const currentColors = colors[theme] || colors.dark;
-  const portfolioUrl = "https://benevolent-tiramisu-6e488a.netlify.app/";
+  const portfolioUrl = "https://hriday-green.vercel.app/";
   const welcomeMessages = [
     "Crafting digital experiences",
     // "Software Engineer",
@@ -191,7 +191,7 @@ const WelcomeScreen = ({ onWelcomeComplete }) => {
             )}
 
             {phase >= 1 && (
-              <motion.h1
+              <motion.h2
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-8xl font-bold tracking-tight leading-tight"
                 style={{ color: currentColors.primary }}
                 variants={contentVariants}
@@ -209,7 +209,7 @@ const WelcomeScreen = ({ onWelcomeComplete }) => {
                     variants={underlineVariants}
                   />
                 </motion.span>
-              </motion.h1>
+              </motion.h2>
             )}
 
             {phase >= 2 && (
