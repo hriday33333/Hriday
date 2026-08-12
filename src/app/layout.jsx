@@ -49,6 +49,7 @@ export const metadata = {
         url: "/profile-logo.png",
         width: 1200,
         height: 630,
+        alt: "Zakir Hasan Hriday - MERN Stack Developer",
       },
     ],
     locale: "en_US",
