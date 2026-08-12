@@ -63,7 +63,7 @@ export const metadata = {
     images: ["/profile-logo.png"],
   },
   icons: {
-    icon: "/logo.svg",
+    icon: "/apple-touch-icon.png",
     apple: "/apple-touch-icon.png",
   },
 };
