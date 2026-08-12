@@ -43,7 +43,7 @@ export const metadata = {
     description:
       "Expert Full Stack Developer specializing in React, JavaScript, and modern web technologies. Building responsive, high-performance web applications.",
     url: siteUrl,
-    siteName: "Zakir Hasan Hriday Portfolio",
+    siteName: "Zakir Hasan Hriday",
     images: [
       {
         url: "/profile-logo.png",
